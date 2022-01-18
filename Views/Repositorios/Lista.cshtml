@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RepositorioFilmes.Models.Repositorio>
+
+<title>
+    @{
+        ViewData["Title"] = "Lista";
+    }
+</title>
+
+
+<div class="container col-10">
+    <h1>Lista de Filmes</h1>
+    <div class="container row">
+        <h4>Filtro: </h4>
+        <select selected id="filtro" asp-items="Html.GetEnumSelectList<Estilo>()">
+            <option></option>
+        </select>
+    </div>
+    <div class="row">
+        @{ foreach (var item in Model)
+            {
+                <div class="container col-md-3 card pt-1 p-2 mt-3 mb-3 m-3">
+                    <img src="~/img/@item.Imagem" class="img-thumbnail" />
+                    <h2 class="card-title">@item.Nome</h2>
+                    <p>@item.Estilo - @item.Genero</p>
+                    <p>Ano de Lançamento: @item.DataLancamento.Year</p>
+                    <p>Duração: @item.Duracao</p>
+                    <a class="btn btn-primary" asp-controller="Repositorios" asp-route-id="@item.Id" asp-action="Item">Mais detalhes</a>
+                </div>
+            }
+        }
+    </div>
+</div>
+<div style="text-align: center">
+    <a class="btn btn-primary">Carregar Mais</a>
+</div>
+
+

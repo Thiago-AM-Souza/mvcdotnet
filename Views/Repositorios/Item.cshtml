@@ -1,0 +1,13 @@
+﻿@model RepositorioFilmes.Models.Repositorio
+
+@{
+    ViewData["Title"] = Model.Nome;
+}
+
+<div class="container justify-content-center">
+    <h1>@Model.Nome</h1>
+    <img src="~/img/@Model.Imagem" class="figure-img w-25 h-50"/>
+    <h2>@Model.Genero - @Model.Duracao</h2>
+    <p>@Model.Descricao</p>
+
+</div>
